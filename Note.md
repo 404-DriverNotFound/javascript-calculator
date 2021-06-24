@@ -40,3 +40,102 @@
 [open in browser](https://kamang-it.tistory.com/entry/VisualStudioCode%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8Open-In-Browser-vscode%EC%97%90%EC%84%9C-html%EC%9D%84-%EB%B0%94%EB%A1%9C-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EC%97%90%EC%84%9C-%ED%99%95%EC%9D%B8%ED%95%98%EC%9E%90)
 
 ### cypress 실행하기
+
+[튜토리얼 링크](https://docs.cypress.io/guides/getting-started/writing-your-first-test#Special-commands)
+
+친절한 동영상과 단계별로 끊어진 설명들이 포함되어 있다.
+
+```
+describe('My First Test', function () {
+	it('Does not do much', function () {
+		// Arrange - setup initial app state
+		// - visit a web page
+		// - query for an element
+		// Act - take an action
+		// - interact with that element
+		// Assert - make an assertion
+		// - make an assertion about page content
+	})
+})
+```
+
+```
+describe('My First Test', function () {
+	it('Does not do much', function () {
+		cy.visit('http://example.cypress.io')
+	})
+})
+```
+
+```
+describe('My First Test', function () {
+	it('Finds an element', function () {
+		cy.visit('https://example.cypress.io')
+
+		cy.contains('type')
+	})
+})
+```
+
+``cy.url()`` :  'yields the current URL as a string'
+
+
+1. visit web
+2. type 클릭
+3. url 확인
+```
+describe('My First Test', function () {
+	it('Makes an assertion', function () {
+		cy.visit('https://example.cypress.io')
+
+		cy.contains('type').click()
+
+		cy.url().should('include', '/commands/actions')
+	})
+})
+```
+
+1. /cypress/integration/sample_spec.js 만든다. 테스트 로직 작성
+2. Cypress 를 킨다(npx cypress open)
+3. 해당 sample_spec.js 를 클릭한다. 테스트 실행
+```
+describe('My First Test', function () {
+	it('Makes an assertion', function () {
+		cy.visit('https://example.cypress.io')
+
+		cy.contains('type').click()
+
+		cy.url().should('include', '/commands/actions')
+
+		cy.get('.action-email').type('fake@email.com')
+		  .should('have.value', 'fake@email.com')
+	})
+})
+```
+
+간단한 실전 적용
+
+```
+describe('My First Test', function () {
+	it('Makes an assertion', function () {
+		cy.visit('./index.html')
+	})
+})
+```
+
+간단한 실전 적용2
+
+상황: 아무것도 작업 안한 index.html 에 연결해서 1을 눌러도 어짜피 아무것도 작업 안했기 때문에 항상 text 가 0으로 고정되어 있음. 따라서 무조건 통과
+
+의의: 이 테스트를 변형해서 버튼을 누르면 ``#total`` 의 text 값이 바뀌는 것을 볼 수 있다.
+
+```
+describe('calculator', () => {
+	it('Makes an assertion', function () {
+		cy.visit('./index.html')
+		// cy.pause()
+		cy.contains('1').click()
+		cy.get('#total').should('have.text', '0')
+	});
+});
+```
