@@ -34,3 +34,9 @@
   ], // 특정 파일별로 옵션을 다르게 지정함, ESLint 방식 사용
 }
 ```
+
+### HTML 실행해보기
+
+[open in browser](https://kamang-it.tistory.com/entry/VisualStudioCode%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8Open-In-Browser-vscode%EC%97%90%EC%84%9C-html%EC%9D%84-%EB%B0%94%EB%A1%9C-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EC%97%90%EC%84%9C-%ED%99%95%EC%9D%B8%ED%95%98%EC%9E%90)
+
+### cypress 실행하기
