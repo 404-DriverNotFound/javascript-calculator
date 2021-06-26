@@ -101,3 +101,7 @@ This project is [MIT](https://github.com/woowacourse/javascript-calculator/blob/
 	- [ ] AC(All Clear)버튼을 누르면 0으로 초기화 한다.
 	- [ ] 숫자는 한번에 최대 3자리 수까지 입력 가능하다.
 	- [ ] 계산 결과를 표현할 때 소수점 이하는 버림한다.
+
+## 치팅 레퍼런스
+
+[치팅 링크](https://kanhi.tistory.com/2)
