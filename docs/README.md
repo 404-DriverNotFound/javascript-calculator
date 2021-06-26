@@ -1,6 +1,6 @@
 ## 기능 구현 목록
 - [ ] 개발 환경 구축
-  - [ ] eslint-airbnb + typescript 환경 구축
+  - [x] eslint-airbnb + typescript 환경 구축
   - [ ] cypress 환경 구축
 - [ ] 테스트 작성
   - [ ] 입력에 관련된 테스트를 작성
