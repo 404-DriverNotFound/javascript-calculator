@@ -20,18 +20,28 @@ export default function calculator() {
   }
 
   function onOperationClicked(e: Event) {
-    prevVal = operateResult(prevVal ?? 0, currVal ?? 0, op);
-    currVal = undefined;
+    if (currVal !== undefined) {
+      prevVal = operateResult(prevVal ?? 0, currVal ?? 0, op);
+      currVal = undefined;
+      totalH1!.innerHTML = String(prevVal);
+    }
     if (e.target instanceof HTMLElement) {
       op = e.target.innerHTML;
       if (op === '=') {
         currVal = prevVal;
         prevVal = undefined;
-        totalH1!.innerHTML = String(currVal);
       }
     }
   }
 
+  function onACClicked() {
+    prevVal = undefined;
+    currVal = undefined;
+    op = '';
+    totalH1!.innerHTML = '0';
+  }
+
   document.getElementsByClassName('digits')[0].addEventListener('click', onDigitClicked);
   document.getElementsByClassName('operations')[0].addEventListener('click', onOperationClicked);
+  document.getElementsByClassName('modifier')[0].addEventListener('click', onACClicked);
 }

@@ -149,19 +149,19 @@ describe("Calculator module", () => {
 
   it("operate AC button", () => {
     cy.get('.modifier').click().get('#total').should((elem) => {
-      expect(elem.text()).to.equal(0);
+      expect(elem.text()).to.equal('0');
     });
 
     testClickResult('123+123X', '246')
       .get('.modifier').click()
       .get('#total').should((elem) => {
-        expect(elem.text()).to.equal(0);
+        expect(elem.text()).to.equal('0');
       })
       .get('.operation').contains('X').click()
       .get('.digit').contains('3').click()
-      .get('.operation').contains('=')
+      .get('.operation').contains('=').click()
       .get('#total').should((elem) => {
-        expect(elem.text()).to.equal(0);
+        expect(elem.text()).to.equal('0');
       });
   });
 });
