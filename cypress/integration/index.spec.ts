@@ -10,7 +10,9 @@ describe("Calculator module", () => {
             .click()
         ),
         cy)
-      .get('#total').should('contain', result)
+      .get('#total').should((elem) => {
+        expect(elem.text()).to.equal(result);
+      })
   )
 
   it("renders form of calculator", () => {
@@ -110,6 +112,9 @@ describe("Calculator module", () => {
 
     cy.reload();
     testClickResult('4632345/1234=', '3');
+
+    cy.reload();
+    testClickResult('123/0=', 'Infinity');
   });
 
   it("don't calculate before next operator", () => {
@@ -123,14 +128,6 @@ describe("Calculator module", () => {
     testClickResult('2X20+0', '0');
   });
 
-  it("calculate with zero when operator button is pressed for the first time", () => {
-    cy.reload();
-    testClickResult('X3=', '0');
-
-    cy.reload();
-    testClickResult('-10=', '-10');
-  });
-
   it("calculate last operator when multiple operator input", () => {
     cy.reload();
     testClickResult('1+X/-2=', '-1');
@@ -142,15 +139,29 @@ describe("Calculator module", () => {
     testClickResult('34651-X0=', '0');
   });
 
+  it("calculate with zero when operator button is pressed for the first time", () => {
+    cy.reload();
+    testClickResult('X3=', '0');
+
+    cy.reload();
+    testClickResult('-10=', '-10');
+  });
+
   it("operate AC button", () => {
-    cy.get('.modifier').click().get('#total').should('contain', '0');
+    cy.get('.modifier').click().get('#total').should((elem) => {
+      expect(elem.text()).to.equal(0);
+    });
 
     testClickResult('123+123X', '246')
       .get('.modifier').click()
-      .get('#total').should('contain', '0')
+      .get('#total').should((elem) => {
+        expect(elem.text()).to.equal(0);
+      })
       .get('.operation').contains('X').click()
       .get('.digit').contains('3').click()
       .get('.operation').contains('=')
-      .get('#total').should('contain', '0');
+      .get('#total').should((elem) => {
+        expect(elem.text()).to.equal(0);
+      });
   });
 });

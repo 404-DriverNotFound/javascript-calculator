@@ -7,7 +7,7 @@ export default function operateResult(a: number, b: number, op: string): number 
     case 'X':
       return a * b;
     case '/':
-      return a / b;
+      return Math.floor(a / b);
     default:
       return b;
   }
