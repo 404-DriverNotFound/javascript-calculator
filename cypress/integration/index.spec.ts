@@ -1,5 +1,5 @@
 describe("Calculator module", () => {
-  const testClickResult = (fomular: string, result: string) => {
+  const testClickResult = (fomular: string, result: string) => (
     fomular
       .split('')
       .reduce<Cypress.Chainable<JQuery<HTMLElement>>>(
@@ -10,8 +10,8 @@ describe("Calculator module", () => {
             .click()
         ),
         cy)
-      .get('#total').should('contain', result);
-  }
+      .get('#total').should('contain', result)
+  )
 
   it("renders form of calculator", () => {
     cy.visit('/');
@@ -46,6 +46,9 @@ describe("Calculator module", () => {
 
     cy.reload();
     testClickResult('000', '0');
+
+    cy.reload();
+    testClickResult('0001', '1');
 
     cy.reload();
     testClickResult('00404', '404');
@@ -114,6 +117,40 @@ describe("Calculator module", () => {
     testClickResult('1+3', '3');
 
     cy.reload();
-    testClickResult('34*0012', '12');
+    testClickResult('34X0012', '12');
+
+    cy.reload();
+    testClickResult('2X20+0', '0');
+  });
+
+  it("calculate with zero when operator button is pressed for the first time", () => {
+    cy.reload();
+    testClickResult('X3=', '0');
+
+    cy.reload();
+    testClickResult('-10=', '-10');
+  });
+
+  it("calculate last operator when multiple operator input", () => {
+    cy.reload();
+    testClickResult('1+X/-2=', '-1');
+
+    cy.reload();
+    testClickResult('3+++++++-2=', '1');
+
+    cy.reload();
+    testClickResult('34651-X0=', '0');
+  });
+
+  it("operate AC button", () => {
+    cy.get('.modifier').click().get('#total').should('contain', '0');
+
+    testClickResult('123+123X', '246')
+      .get('.modifier').click()
+      .get('#total').should('contain', '0')
+      .get('.operation').contains('X').click()
+      .get('.digit').contains('3').click()
+      .get('.operation').contains('=')
+      .get('#total').should('contain', '0');
   });
 });
