@@ -139,3 +139,16 @@ describe('calculator', () => {
 	});
 });
 ```
+
+display 바꾸기
+
+```
+display.innerHTML = display.innerHTML + char;
+display.innerHTML = Number(display.innerHTML + char);
+```
+
+첫 번째 코드는 초기값 0을 그대로 가져가서 1,2,3을 입력했다면 0123 이 출력된다.
+
+하지만,
+
+두 번째 코드는 위의 0123을 숫자 값으로 바꿔주어 123 이 출력된다.

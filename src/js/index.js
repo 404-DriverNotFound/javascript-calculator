@@ -1,43 +1,25 @@
-function func9() {
-	document.getElementById('total').innerHTML = '9';
-}
-
-function func8() {
-	document.getElementById('total').innerHTML = '8';
-}
-
-function func7() {
-	document.getElementById('total').innerHTML = '7';
-}
-
-function func6() {
-	document.getElementById('total').innerHTML = '6';
-}
-
-function func5() {
-	document.getElementById('total').innerHTML = '5';
-}
-
-function func4() {
-	document.getElementById('total').innerHTML = '4';
-}
-
-function func3() {
-	document.getElementById('total').innerHTML = '3';
-}
-
-function func2() {
-	document.getElementById('total').innerHTML = '2';
-}
-
-function func1() {
-	document.getElementById('total').innerHTML = '1';
-}
-
-function func0() {
-	document.getElementById('total').innerHTML = '0';
+function input(char) {
+	var display = document.getElementById('total'); // 우리가 식을 입력할 input 태그를 불러옵니다.
+    // display.value는 input 태그 안에 들어 있는 값을 의미합니다.
+    display.innerHTML = Number(display.innerHTML + char);
+    // display.value += char; 로 쓸 수도 있습니다.
+    // input 태그의 값 뒤에 char 문자를 추가해 주는 역할을 합니다.
 }
 
 function funcAC() {
 	document.getElementById('total').innerHTML = '0';
 }
+
+// function plus() {
+// 	plus_flag = 1;
+// 	var display = document.getElementById('total'); // 우리가 식을 입력할 input 태그를 불러옵니다.
+// 	prevNumber = Number(display.innerHTML);
+// 	/* 처음부터 다시 값을 받아와야한다. */
+// }
+
+// function pushEqualBtn() {
+// 	if (plus_flag == 1) {
+// 		plus_flag = 0;
+
+// 	}
+// }
