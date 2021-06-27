@@ -1,1 +1,3 @@
-console.log('hello world!');
+import calculator from './module/calculator.js';
+
+calculator();
