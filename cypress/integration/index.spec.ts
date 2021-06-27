@@ -76,7 +76,7 @@ describe("Calculator module", () => {
     testClickResult('10000+200000=', '300');
 
     cy.reload();
-    testClickResult('10000+200000=+3211111', '621');
+    testClickResult('10000+200000=+3211111=', '621');
   });
 
   it("calculate minus operator", () => {
