@@ -162,6 +162,9 @@ display.innerHTML = Number(display.innerHTML + char);
 
 
 #### sunpark 님 코드에서 궁금한 것
+- tsc 로 컴파일 방법
+	- tsc 컴파일해서 index.html 을 하면, 연결이 잘 안된다.
+	- 어떻게 컴파일해서 실행하는 지 물어보자.
 - module
 	- module 을 쓰려면 export, import 해야한다.
 
@@ -170,6 +173,9 @@ display.innerHTML = Number(display.innerHTML + char);
 
 - ``document.getElementsByClassName('digits')[0].addEventListener('click', onDigitClicked);``
 	- html 에 있는 digits 를 찾고 [0] 의 의미가 무엇일까?
+		- 0 은 digits 의 첫번째 것을 의미
+		- [테스트 링크](https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_document_getelementsbyclassname)
+		- 그렇다면 여기서 왜 digits 클라스의 0번만 사용했을 까?
 	- onDigitClicked 는 정의한 함수이다.
 	- 해당 html 코드
 		```
@@ -189,6 +195,9 @@ display.innerHTML = Number(display.innerHTML + char);
 	        </div>
 		```
 
+- ``function onOperationClicked(e: Event) {`` 여기서 ``e: Event`` 의 의미?
+	- 내 추측으로는 e 는 그저 파라미터에 불과하고 Event 는 파라미터가 받을 타입이다.
+
 - ``let prevVal: number | undefined = undefined;`` 의 의미는 prevVal 은 number 와 undefined 만 받을 수 있도록 type 설정한 것
 
 - ``import operateResult from "../util/operate.js";``
@@ -196,8 +205,18 @@ display.innerHTML = Number(display.innerHTML + char);
 
 - ``if (e.target instanceof HTMLElement) {`` 의 의미가 무엇일까?
 	- e 는 click 으로 인한 event가 발생하는 것인데, 정확한 의미를 모르겠다.
+	- HTMLElement 는 button type 과 관련있다.
+		- prototype 을 얘기한 것이 무엇인가?
+			- [이거 인듯?](https://developer.mozilla.org/ko/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
+		- DOM 상속관계?
+			- ![DOM상속관계](https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2530F03A5706A9AD15)
+		- instanceof?
+			- [링크](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/instanceof)
 
 - eventListener 는 맨 마지막에 모아놓는 게 예쁜 것같다.
+- ``totalH1!.innerHTML = String(currVal);`` 에서 ! 는 typescript 에 있는 것
+	- non-null assertion operator
+
 
 #### hyochoi 님 코드에서 궁금한 것
 
@@ -211,6 +230,11 @@ display.innerHTML = Number(display.innerHTML + char);
 	```
 	- ``/^-?0*[0-9]{1,3}`` 정규 표현식?
 	-
+
+#### kmin 님 코드에서 궁금한 것
+
+- 코드에서 !, ? 의 의미는 무엇인가?
+
 #### kmin 님과 내 코드 피드백
 - prev, curr, oper 값으로 나누었고 연산자가 입력되면 prev 에 값을 저장
 	- prev, curr, oper 모두 string 값으로 하셨고 초기화도 당연히 ''을 넣어 초기화하는 방법썼다.
@@ -220,3 +244,5 @@ display.innerHTML = Number(display.innerHTML + char);
 	- tmp.js 을 만들고 html에 script 형태로 넣어두면 index.js 에서 선언한 hello 도 tmp.js 에서 가져와서 활용할 수 있었다.
 - 해당 테스트할 파일을 cypress 로 돌릴 때 나는 html file 경로를 올렸는 데, cypress 가 임의로 해당 포트를 올려줘서 돌려주는 것같다.
 	- kmin 님은 크롬 브라우저의 익스텐션 기능을 활용해서 돌리는 방법으로 구현하셨다고 했던 것같다.
+
+CORS 문제에 대해서 [링크](https://velog.io/@takeknowledge/%EB%A1%9C%EC%BB%AC%EC%97%90%EC%84%9C-CORS-policy-%EA%B4%80%EB%A0%A8-%EC%97%90%EB%9F%AC%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0-3gk4gyhreu)

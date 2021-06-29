@@ -9,30 +9,39 @@ describe('calculator', () => {
 		*/
 		cy.get('.digit').contains('1').click()
 		cy.get('#total').should('have.text', '1')
+		cy.get('.modifier').contains('AC').click()
 
 		cy.get('.digit').contains('2').click()
 		cy.get('#total').should('have.text', '2')
+		cy.get('.modifier').contains('AC').click()
 
 		cy.get('.digit').contains('3').click()
 		cy.get('#total').should('have.text', '3')
+		cy.get('.modifier').contains('AC').click()
 
 		cy.get('.digit').contains('4').click()
 		cy.get('#total').should('have.text', '4')
+		cy.get('.modifier').contains('AC').click()
 
 		cy.get('.digit').contains('5').click()
 		cy.get('#total').should('have.text', '5')
+		cy.get('.modifier').contains('AC').click()
 
 		cy.get('.digit').contains('6').click()
 		cy.get('#total').should('have.text', '6')
+		cy.get('.modifier').contains('AC').click()
 
 		cy.get('.digit').contains('7').click()
 		cy.get('#total').should('have.text', '7')
+		cy.get('.modifier').contains('AC').click()
 
 		cy.get('.digit').contains('8').click()
 		cy.get('#total').should('have.text', '8')
+		cy.get('.modifier').contains('AC').click()
 
 		cy.get('.digit').contains('9').click()
 		cy.get('#total').should('have.text', '9')
+		cy.get('.modifier').contains('AC').click()
 
 		// /*
 		// !!연산자 테스트!! : Just for test
