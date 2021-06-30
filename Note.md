@@ -246,3 +246,29 @@ display.innerHTML = Number(display.innerHTML + char);
 	- kmin 님은 크롬 브라우저의 익스텐션 기능을 활용해서 돌리는 방법으로 구현하셨다고 했던 것같다.
 
 CORS 문제에 대해서 [링크](https://velog.io/@takeknowledge/%EB%A1%9C%EC%BB%AC%EC%97%90%EC%84%9C-CORS-policy-%EA%B4%80%EB%A0%A8-%EC%97%90%EB%9F%AC%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0-3gk4gyhreu)
+
+### Javascript 모듈에 관하여
+
+[링크](https://ui.toast.com/weekly-pick/ko_20190418)
+
+### tsconfig.json
+
+[tsconfig 주석링크](https://yamoo9.gitbook.io/typescript/cli-env/tsconfig)
+
+sunpark 님 옵션
+```
+{
+  "compilerOptions": {
+    "target": "es2015",                             /* ECMAScript 목표 버전 설정: 'ES3'(기본), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
+    "module": "es6",                                /* 생성될 모듈 코드 설정: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
+    "outDir": "./src/js",                           /* 출력될 디렉토리 설정 */
+    "strict": true,                                 /* E모든 엄격한 유형 검사 옵션 활성화 */
+    "noImplicitAny": true,                          /* 명시적이지 않은 'any' 유형으로 표현식 및 선언 사용 시 오류 발생 */
+    "esModuleInterop": true,                        /* 모든 가져오기에 대한 네임스페이스 객체 생성을 통해 CommonJS와 ES 모듈 간의 상호 운용성을 제공. 'allowSyntheticDefaultImports' 암시 */
+    "skipLibCheck": true,                           /* 선언 파일 유형 검사 스킵 */
+    "forceConsistentCasingInFileNames": true        /* 동일한 파일에 대한 일관되지 않은 케이스 참조를 허용하지 않음 */
+  },
+  "include": ["src/ts/**/*.ts"]						/* 컴파일 포함 */
+}
+
+```
