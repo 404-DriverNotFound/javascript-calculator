@@ -1,5 +1,5 @@
 describe('calculator', () => {
-	it('Is button working?', function () {
+	it('does button working?', function () {
 		cy.visit('./index.html');
 
 		/*
@@ -48,7 +48,7 @@ describe('calculator', () => {
 		cy.get('#total').should('have.text', '0');
 	});
 
-	it('Is calculating correct?', function () {
+	it('does calculating correct?', function () {
 
 		/*
 		!!연산자 테스트!! : Just for test
