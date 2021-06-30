@@ -283,4 +283,17 @@ dist
 !.vscode/extensions.json
 *.code-workspace
 
-# End of https://www.toptal.com/developers/gitignore/api/vscode,node,intellij
+### CypressIO ###
+# gitignore template for the CypressIO, browser test framework
+# website: https://www.cypress.io/
+
+cypress/results/*
+cypress/reports/*
+cypress/screenshots/*
+cypress/videos/*
+
+# End of https://www.toptal.com/developers/gitignore/api/vscode,node,intellij,cypressio
+
+cypress/integration/sample_spec.js
+cypress/integration/test.js
+js/
