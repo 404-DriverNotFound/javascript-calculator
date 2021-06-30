@@ -1,61 +1,66 @@
 export default function calculator() {
-	let prevVal: string = '0';
+	let prevVal: number = 0;
 	let op: string = '';
-	let currVal: string = '0';
+	let currVal: number = 0;
 
 	const totalH1 = document.getElementById('total');
 
 	function onDigitClicked(e: Event) {
-		if (Number(currVal) >= 100 || Number(currVal) <= -100)
+		if (currVal >= 100 || currVal <= -100)
 			return ;
-		currVal = String(Number(currVal) * 10);
-		currVal = String(currVal + Number(e.target as Element));
+		currVal *= 10;
+		console.log('currVal! : ' + currVal);
+		currVal = currVal + Number((e.target as HTMLButtonElement).innerHTML);
+		console.log('e.target as HTMLButtonElement).value : ' + Number((e.target as HTMLButtonElement).innerHTML));
+		console.log('currVal : ' + currVal);
 		totalH1!.innerHTML = String(currVal);
 	}
 
 	function onACClicked(e: Event) {
-		prevVal = '0';
+		prevVal = 0;
 		op = '';
-		currVal = '0';
+		currVal = 0;
 		totalH1!.innerHTML = '0';
 	}
 
 	function onOperationClicked(e: Event) {
-		if (e.target!.toString() === '=')
+		console.log('(e.target as HTMLButtonElement).innerHTML' + (e.target as HTMLButtonElement).innerHTML);
+		console.log('(e.target as HTMLButtonElement).innerText' + (e.target as HTMLButtonElement).innerText);
+		if ((e.target as HTMLButtonElement).innerHTML === '=')
 		{
 			switch (op) {
 				case '+':
-					currVal = String(Number(currVal) + Number(prevVal));
+					currVal += prevVal;
 					console.log(currVal);
 					totalH1!.innerHTML = String(currVal);
 					op = '';
 					break ;
 				case '-':
-					currVal = String(Number(prevVal) - Number(currVal));
+					currVal = prevVal - currVal;
 					totalH1!.innerHTML = String(currVal);
 					op = '';
 					break ;
 				case 'X':
 					console.log('prevVal =' + prevVal);
 					console.log('currVal =' + currVal);
-					currVal = String(Number(currVal) * Number(prevVal));
+					currVal *= prevVal;
 					totalH1!.innerHTML = String(currVal);
 					op = '';
 					break ;
 				case '/' :
-					currVal = String(Number(prevVal) / Number(currVal));
-					totalH1!.innerHTML = String(currVal);
+					currVal = prevVal / currVal;
+					totalH1!.innerHTML = String(Math.round(currVal));
 					op = '';
 					break ;
 			}
 		}
 		else {
-			op = e.target!.toString();
+			op = (e.target as HTMLButtonElement).innerHTML;
 			prevVal = currVal;
-			currVal = '0';
+			currVal = 0;
 		}
 	}
-	document.getElementsByClassName('digits')[0].addEventListener('click', onDigitClicked);
-	document.getElementsByClassName('modifier')[0].addEventListener('click', onACClicked);
-	document.getElementsByClassName('operations')[0].addEventListener('click', onOperationClicked);
+	document.querySelector<HTMLButtonElement>('.digits')!.addEventListener('click', onDigitClicked);
+	document.querySelector<HTMLButtonElement>('.modifier')!.addEventListener('click', onACClicked);
+	document.querySelector<HTMLButtonElement>('.operations')!.addEventListener('click', onOperationClicked);
 }
