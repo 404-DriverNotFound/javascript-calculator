@@ -3,16 +3,13 @@ export default function calculator() {
 	let op: string = '';
 	let currVal: number = 0;
 
-	const totalH1 = document.getElementById('total');
+	const totalH1 = document.getElementById('total')!;
 
 	function onDigitClicked(e: Event) {
 		if (currVal >= 100 || currVal <= -100)
 			return ;
 		currVal *= 10;
-		console.log('currVal! : ' + currVal);
 		currVal = currVal + Number((e.target as HTMLButtonElement).innerHTML);
-		console.log('e.target as HTMLButtonElement).value : ' + Number((e.target as HTMLButtonElement).innerHTML));
-		console.log('currVal : ' + currVal);
 		totalH1!.innerHTML = String(currVal);
 	}
 
@@ -24,32 +21,27 @@ export default function calculator() {
 	}
 
 	function onOperationClicked(e: Event) {
-		console.log('(e.target as HTMLButtonElement).innerHTML' + (e.target as HTMLButtonElement).innerHTML);
-		console.log('(e.target as HTMLButtonElement).innerText' + (e.target as HTMLButtonElement).innerText);
 		if ((e.target as HTMLButtonElement).innerHTML === '=')
 		{
 			switch (op) {
 				case '+':
 					currVal += prevVal;
-					console.log(currVal);
-					totalH1!.innerHTML = String(currVal);
+					totalH1.innerHTML = String(currVal);
 					op = '';
 					break ;
 				case '-':
 					currVal = prevVal - currVal;
-					totalH1!.innerHTML = String(currVal);
+					totalH1.innerHTML = String(currVal);
 					op = '';
 					break ;
 				case 'X':
-					console.log('prevVal =' + prevVal);
-					console.log('currVal =' + currVal);
 					currVal *= prevVal;
-					totalH1!.innerHTML = String(currVal);
+					totalH1.innerHTML = String(currVal);
 					op = '';
 					break ;
 				case '/' :
-					currVal = prevVal / currVal;
-					totalH1!.innerHTML = String(Math.round(currVal));
+					currVal = Math.floor(prevVal / currVal);
+					totalH1.innerHTML = String(currVal);
 					op = '';
 					break ;
 			}
